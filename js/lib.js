@@ -2,7 +2,6 @@ $( function() {
   createTabs();
   createTooltip();
 
-
   function createTabs() {
     $('.tabs__tab:not(.active)').hide();   
     var bookmarks = $('.tabs__bookmark').hover(setBookmarkColor('#ddd'), setBookmarkColor('#eee'));
@@ -24,7 +23,6 @@ $( function() {
 
           $('#js-tab' + activeBookmarkId.slice(-3)).addClass('active').show();
         }
-
       }
     }
     
@@ -39,26 +37,30 @@ $( function() {
   }
 
   function createTooltip() {
+    var COLOR_BLUE = '#44f';
+    var COLOR_GREY = '#ccc';
+
     $('.fields__tooltip').css('opacity', '0');
 
     $('.fields__field').hover( setDisplay(1), setDisplay(0) ).focusin( setDisplay(1) ).focusout( setDisplay(0) );
 
     $('#js-button-show').on('click', 
-      function() {
+      function(e) {
+        e.preventDefault();
         $('.fields__tooltip').css('opacity', '1');
       }
     ).mousedown(
       function() {
-        $(this).css({'color':'#fff', 'background-color':'#44f', 'border-color':'#44f'});
+        $(this).css({'color':'#fff', 'background-color':COLOR_BLUE, 'border-color':COLOR_BLUE});
       }
     ).mouseup(
       function() {
-        $(this).css({'color':'#000', 'background-color':'#ccc'});
+        $(this).css({'color':'#000', 'background-color':COLOR_GREY});
       }
     ).focusin( 
       function() {
         if(!($(this).css('color')=='rgb(255, 255, 255)')) {
-          $(this).css({'border-color':'#44f', 'background-color':'#ccc'});
+          $(this).css({'border-color':COLOR_BLUE, 'background-color':COLOR_GREY});
         }
       }
     ).focusout( 
@@ -68,7 +70,7 @@ $( function() {
     ).hover(
       function() {
         if ( !$(this).is(':focus') ) {
-          $(this).css('background-color', '#ccc');
+          $(this).css('background-color', COLOR_GREY);
         }
       },
       function() {
@@ -76,7 +78,7 @@ $( function() {
           $(this).css('background-color', '');
         }
       }
-    )
+    );
 
     function setDisplay(value) {
       return function() {
@@ -87,4 +89,4 @@ $( function() {
 
   }
   
-})
+});
