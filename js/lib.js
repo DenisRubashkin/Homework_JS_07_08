@@ -47,6 +47,7 @@ $( function() {
     $('#js-button-show').on('click', 
       function(e) {
         e.preventDefault();
+        $('.fields__tooltip').stop(true);
         $('.fields__tooltip').css('opacity', '1');
       }
     ).mousedown(
