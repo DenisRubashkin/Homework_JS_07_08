@@ -83,7 +83,7 @@ $( function() {
     function setDisplay(value) {
       return function() {
         var fieldId = $(this)[0].id;
-        $('#js-' + fieldId).animate({opacity: value}, 250);
+        $('#js-' + fieldId).animate({opacity: value}, 700);
       }
     }
 
